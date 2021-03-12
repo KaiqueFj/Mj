@@ -31,3 +31,4 @@ adonis migration:run
 "# Tcc" 
 "# Tcc" 
 "# Tcc" 
+"# Mj" 
