@@ -13,6 +13,7 @@ class EventosSchema extends Schema {
         .inTable('users')
         .onUpdate('CASCADE')
         .onDelete('SET NULL')
+      table.string('day').notNullable()
       table.string('title').notNullable()
       table.string('location').notNullable()
       table.datetime('date').notNullable()

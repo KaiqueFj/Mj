@@ -19,7 +19,7 @@ class User extends Model {
     return this.hasMany('App/Models/Token')
   }
   events () {
-    return this.hasMany('App/Models/Evento')
+    return this.hasMany('App/Models/Event')
 }
 }
 

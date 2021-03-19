@@ -4,6 +4,7 @@
 const Model = use('Model')
 
 class Evento extends Model {
+    
 }
 
 module.exports = Evento

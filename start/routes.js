@@ -1,5 +1,3 @@
-'use strict'
-
 /*
 |--------------------------------------------------------------------------
 | Routes
@@ -21,22 +19,9 @@ Route.get('/', () => {
 })
 
 Route.post('users', 'UserController.store'); // adiciona o usuario ao banco de dados e salva suas informações
+Route.post('login/a', 'SessionController.login');
 
-Route.group(() => {
-  Route.put('users/:id', 'UserController.update') //faz o update da senha e username do usuario
-}).middleware(['auth']);
-
-Route.post('/login', 'UserController.login')
-
-Route.post('users/forgotPassword', 'UserController.recover') ;// serve para recuperar a senha que foi esquecida, mandando um email para a conta criada
-
-Route.put('users/forgotPassword/:token/:email', 'UserController.update') //route criada para o link de recuperação de senha
-
-Route.post('events/new', 'UserController.event')//route para relacionar os eventos com usuarios
-
-Route.get('events/list/date', 'UserController.show') // route para listar os eventos pela sua data de criacao
-
-Route.delete('events/:id/delete', 'UserController.destroy')// deleta o evento que o usuario desejar
-
-
+Route.post('event/new', 'UserController.event').middleware('auth')
+Route.post('event/ap', 'UserController.index').middleware('auth')//route para relacionar os eventos com usuarios
+//Route.get('events/list/date', 'UserController.show') // route para listar os eventos pela sua data de criacao
 
