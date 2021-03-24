@@ -3,27 +3,21 @@
 const User = use('App/Models/User');
 const Evento = use('App/Models/Evento');
 
-
+/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')}  **/
 class SessionController {
-  async login({ request, auth, response}) {
-    const { email, password } = request.all()
+  async login({ request, auth }) {
 
     try {
-
-      if (await auth.attempt(email, password)) {
-        const user = await User.findBy('email', email)
-        const acessToken = await auth.generate(user)
-        return response.json(acessToken)
-      }
-
-      
+      const { email, password } = request.all()
+      const token = await auth.attempt(email, password);
+      return token;
     } catch (error) {
       console.log("email ou senha inválidos");
     }
   }
 
-  index({auth, response, params}) {
-    try{
+  index({ auth, response, params }) {
+    try {
       const evento = Evento.all()
       return evento
 

@@ -18,10 +18,16 @@ Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
 
-Route.post('users', 'UserController.store'); // adiciona o usuario ao banco de dados e salva suas informações
-Route.post('login/a', 'SessionController.login');
 
-Route.post('event/new', 'UserController.event').middleware('auth')
-Route.post('event/ap', 'UserController.index').middleware('auth')//route para relacionar os eventos com usuarios
-//Route.get('events/list/date', 'UserController.show') // route para listar os eventos pela sua data de criacao
+// Registro e Login de Usuário
+Route.post('users/register', 'UserController.store'); 
+Route.post('users/login', 'SessionController.login');
 
+// funções de update e recuperacação de password
+Route.post('password/update','PasswordController.update')
+Route.post('password/recover','PasswordController.recover' )
+
+
+// Criação da tabela para remedio
+Route.post('create/medicine', 'MedicineController.event').middleware('auth')
+Route.get('show/medicine', 'MedicineController.index').middleware('auth')
