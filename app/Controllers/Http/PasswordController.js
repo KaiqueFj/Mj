@@ -37,7 +37,8 @@ class PasswordController {
     
     
       }
-    
+
+      
     
       /* Salva uma nova request para o usuario * quando ele solicita a troca da senha  * recebe um novo token para utilizar*/
     

@@ -24,7 +24,7 @@ Route.post('users/register', 'UserController.store');
 Route.post('users/login', 'SessionController.login');
 
 // funções de update e recuperacação de password
-Route.post('password/update','PasswordController.update')
+Route.put('password/update','PasswordController.update')
 Route.post('password/recover','PasswordController.recover' )
 
 
