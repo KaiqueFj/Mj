@@ -9,24 +9,23 @@ const Mail = use('Mail') // Adonis' mail
 class PasswordController {
 
   async update ({ request, response, params }) {
-    const id = params.id
-    const { username, password, newPassword } = request
-      .only(['username', 'password', 'newPassword'])
+    const { email, newPassword } = request
+      .only(['email','newPassword'])
 
     // looking for user in DB
-    const user = await User.findByOrFail('id', id)
+    const user = await User.findByOrFail('email', email)
 
-    // checking if old password informed is correct
-    const passwordCheck = await Hash.verify(password, user.password)
+    // // checking if old password informed is correct
+    // const passwordCheck = await Hash.verify(password, user.password)
 
-    if (!passwordCheck) {
-      return response
-        .status(400)
-        .send({ message: { error: 'Incorrect password provided' } })
-    }
+    // if (!passwordCheck) {
+    //   return response
+    //     .status(400)
+    //     .send({ message: { error: 'Incorrect password provided' } })
+    // }
 
     // updating user data
-    user.username = username
+    user.email = email
     user.password = newPassword
 
     // persisting new data (saving)
