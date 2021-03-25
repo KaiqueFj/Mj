@@ -8,37 +8,30 @@ const Mail = use('Mail') // Adonis' mail
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')}  **/
 class PasswordController {
 
-    async update({ request, response, params }) {
-        const id = params.id
-        const { username, password, newPassword } = request
-          .only(['username', 'password', 'newPassword'])
-    
-        // procura o cliente no db
-        const user = await User.findByOrFail('id', id)
-    
-        // check se o password antigo está correto
-        const passwordCheck = await Hash.verify(password, user.password)
-    
-        if (!passwordCheck) {
-          return response
-            .status(400)
-            .send({ message: { error: 'senha incorreta' }, password: password })
-        }
-    
-        else {
-          // atualiza a informação do usuario
-          user.username = username
-          user.password = newPassword
-    
-          // salva a informação
-          await user.save()
-          return response.send({ message: 'dados salvos com sucesso!' })
-        }
-    
-    
-      }
+  async update ({ request, response, params }) {
+    const id = params.id
+    const { username, password, newPassword } = request
+      .only(['username', 'password', 'newPassword'])
 
-      
+    // looking for user in DB
+    const user = await User.findByOrFail('id', id)
+
+    // checking if old password informed is correct
+    const passwordCheck = await Hash.verify(password, user.password)
+
+    if (!passwordCheck) {
+      return response
+        .status(400)
+        .send({ message: { error: 'Incorrect password provided' } })
+    }
+
+    // updating user data
+    user.username = username
+    user.password = newPassword
+
+    // persisting new data (saving)
+    await user.save()
+  }
     
       /* Salva uma nova request para o usuario * quando ele solicita a troca da senha  * recebe um novo token para utilizar*/
     
@@ -72,8 +65,9 @@ class PasswordController {
           console.log(err)
         }
       }
-    
-      //update da recuperacao de senha do usuario
+     
+
 }
 
 module.exports = PasswordController
+

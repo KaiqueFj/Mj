@@ -18,14 +18,13 @@ Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
 
-
 // Registro e Login de Usuário
-Route.post('users/register', 'UserController.store'); 
+Route.post('users/register', 'UserController.store');
 Route.post('users/login', 'SessionController.login');
 
 // funções de update e recuperacação de password
-Route.put('password/update','PasswordController.update')
-Route.post('password/recover','PasswordController.recover' )
+Route.put('password/update/:id', 'PasswordController.update');
+Route.post('password/recover', 'PasswordController.recover')
 
 
 // Criação da tabela para remedio

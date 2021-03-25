@@ -7,6 +7,8 @@ const crypto = require('crypto'); // crypto
 const Mail = use('Mail') // Adonis' mail
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')}  **/
+
+//Register
 class UserController {
   async store({ request, response, auth }) {
     const user_data = request.all();
@@ -15,7 +17,6 @@ class UserController {
     const user = await User.create(user_data);
 
     const { token } = await auth.generate(user);
-
 
     await Mail.send('emails.welcome', user.toJSON(), (message) => {
       message

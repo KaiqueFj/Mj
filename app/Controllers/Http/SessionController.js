@@ -4,6 +4,8 @@ const User = use('App/Models/User');
 const Evento = use('App/Models/Evento');
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')}  **/
+
+
 class SessionController {
   async login({ request, auth }) {
 
