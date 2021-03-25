@@ -30,16 +30,15 @@ class UserController {
 
   }
 
-  async index({ auth, response }) {
+  async index({auth, response}) {
     try {
-
+      //Get user informations
       await auth.check()
-      const event = await Event.all()
+      const user = await auth.getUser()
+      return user
 
-      return event
-
-    } catch (error) {
-      console.log(error);
+    } catch(error){
+      response.send(error)
     }
   }
 

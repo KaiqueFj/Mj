@@ -11,6 +11,8 @@
 |
 */
 
+const { route } = require('@adonisjs/framework/src/Route/Manager');
+
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route') //usa route para fazer a interação
 
@@ -21,6 +23,7 @@ Route.get('/', () => {
 // Registro e Login de Usuário
 Route.post('users/register', 'UserController.store');
 Route.post('users/login', 'SessionController.login');
+Route.get('users/home', 'SessionController.index');
 
 // funções de update e recuperacação de password
 Route.put('password/update/:id', 'PasswordController.update');
