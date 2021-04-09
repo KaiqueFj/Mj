@@ -18,8 +18,12 @@ class User extends Model {
   tokens () {
     return this.hasMany('App/Models/Token')
   }
-  events () {
-    return this.hasMany('App/Models/Event')
+  show_medicine() {
+    return this.hasMany('App/Models/Medicine')
+}
+
+hospitals () {
+  return this.hasMany('App/Models/Hospital')
 }
 }
 

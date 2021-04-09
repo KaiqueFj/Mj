@@ -4,7 +4,7 @@ const Schema = use('Schema')
 
 class EventosSchema extends Schema {
   up() {
-    this.create('eventos', (table) => {  //criação da tabela eventos no db, e sua estrutura
+    this.create('medicines', (table) => {  //criação da tabela eventos no db, e sua estrutura
       table.increments()
       table
         .integer('user_id')
@@ -23,7 +23,7 @@ class EventosSchema extends Schema {
   }
 
   down() {
-    this.drop('eventos')
+    this.drop('medicines')
   }
 }
 

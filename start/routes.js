@@ -16,20 +16,37 @@ const { route } = require('@adonisjs/framework/src/Route/Manager');
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route') //usa route para fazer a interação
 
-Route.get('/', () => {
-  return { greeting: 'Hello world in JSON' }
-})
 
 // Registro e Login de Usuário
 Route.post('users/register', 'UserController.store');
 Route.post('users/login', 'SessionController.login');
 Route.get('users/home', 'SessionController.index');
 
+
+//registro e login de hospital
+
+Route.post('hospital/register', 'HospitalController.store');
+Route.post('hospital/login', 'SessionController.login');
+Route.get('hospital/home', 'SessionController.index');
+
 // funções de update e recuperacação de password
 Route.put('password/update/:id', 'PasswordController.update');
 Route.post('password/recover', 'PasswordController.recover')
 
-
 // Criação da tabela para remedio
-Route.post('create/medicine', 'MedicineController.event').middleware('auth')
-Route.get('show/medicine', 'MedicineController.index').middleware('auth')
+Route.post('create/medicine', 'MedicineController.store').middleware('auth')
+Route.get('show/medicine', 'MedicineController.show').middleware('auth')
+
+
+//adicionar consultas e fazer a busca delas
+Route.post('create/schedule', 'ConsultaController.schedule').middleware('auth')
+Route.get('show/schedule', 'ConsultaController.show').middleware('auth')
+
+
+
+Route.get('test/medicine', 'MedicineController.test')
+
+
+
+
+

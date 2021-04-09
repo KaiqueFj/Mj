@@ -1,7 +1,7 @@
 "use strict";
 
 const User = use('App/Models/User');
-const Evento = use('App/Models/Evento');
+const Event = use('App/Models/Medicine')
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')}  **/
 
@@ -20,7 +20,7 @@ class SessionController {
 
   index({ auth, response, params }) {
     try {
-      const evento = Evento.all()
+      const evento = Event.all()
       return evento
 
     } catch {
