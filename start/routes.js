@@ -37,14 +37,13 @@ Route.post('password/recover', 'PasswordController.recover')
 Route.post('create/medicine', 'MedicineController.store').middleware('auth')
 Route.get('show/medicine', 'MedicineController.show').middleware('auth')
 
-
 //adicionar consultas e fazer a busca delas
 Route.post('create/schedule', 'ConsultaController.schedule').middleware('auth')
 Route.get('show/schedule', 'ConsultaController.show').middleware('auth')
 
 
 
-Route.get('test/medicine', 'MedicineController.test')
+Route.get('test/medicine/:id', 'MedicineController.teste')
 
 
 

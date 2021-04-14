@@ -1,63 +1,51 @@
 'use strict'
 const User = use('App/Models/User')
-const Event = use('App/Models/Medicine')
+const Medicine = use('App/Models/Medicine');
 
-const Hash = use('Hash')
-const moment = require('moment') // moment (RUN NPM INSTALL MOMENT)
-const crypto = require('crypto'); // crypto
-const Mail = use('Mail') // Adonis' mail
+
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')}  **/
-
 class MedicineController {
 
-    //Registra um evento
+  //Registra um evento
 
-    async store({ request, auth }) {
+  async store({ request, auth }) {
 
-        const { day, title, location, date, time } = request.all(); // info do evento
-        const user = await auth.getUser(); // retorna o user id
+    const {  medicine, dateI, dateF, time } = request.all(); // info do evento
+    const user = await auth.getUser(); // retorna o user id
 
-        const data = {
-            user_id: user.id,
-            day: day,
-            title: title,
-            location: location,
-            date: date,
-            time: time
-        }
-
-        const newEvent = await Event.create(data);
-        return newEvent;
-
-
+    const data = {
+      user_id: user.id,
+      medicine: medicine,
+      dateI: dateI,
+      dateF: dateF,
+      time: time
     }
 
-    //busca o evento pela data e retorna as informações sobre ele
-    async show({auth, response}) {
-        try {
-            await auth.check()
-
-          //Get user informations
-          const medicine = await Event.all();
-          return medicine
-    
-        } catch(error){
-          response.send(error)
-        }
-      }
+    const newEvent = await Medicine.create(data);
+    return newEvent;
 
 
-      //busca o evento pela data e retorna as informações sobre ele
-      async test() { 
+  }
 
-        const med = await Event.query()
-        .with('user')
-        .fetch();
+  //busca o evento pela data e retorna as informações sobre ele
+  async show({ auth }) {
+    await auth.check()
+    const user = await auth.getUser()
 
-        return med
-        }
-    
+    const medicine = await Medicine.query().where('user_id', user.id).fetch()
+    return medicine
+  }
+
+  //busca o evento pela data e retorna as informações sobre ele
+
+  async teste({ params }) {
+    const id = params.id
+    const user = await User.findByOrFail('id', id)
+    const tab = await medicine.query().with('user').fetch();
+    return tab
+  }
+
 }
 
 module.exports = MedicineController

@@ -5,7 +5,7 @@ const Model = use('Model')
 const Hash = use('Hash')
 
 class User extends Model {
-  static boot () {
+  static boot() {
     super.boot()
 
     this.addHook('beforeSave', async (userInstance) => {
@@ -15,16 +15,20 @@ class User extends Model {
     })
   }
 
-  tokens () {
+  tokens() {
     return this.hasMany('App/Models/Token')
   }
   show_medicine() {
     return this.hasMany('App/Models/Medicine')
-}
+  }
 
-hospitals () {
-  return this.hasMany('App/Models/Hospital')
-}
+  hospitals() {
+    return this.hasMany('App/Models/Hospital')
+  }
+
+  show_consulta() {
+    return this.hasMany('App/Models/Consulta')
+  }
 }
 
 module.exports = User
