@@ -24,9 +24,8 @@ Route.get('users/home', 'SessionController.index');
 
 
 //registro e login de hospital
-
 Route.post('hospital/register', 'HospitalController.store');
-Route.post('hospital/login', 'SessionController.login');
+Route.post('hospital/login', 'HospitalController.login');
 Route.get('hospital/home', 'SessionController.index');
 
 // funções de update e recuperacação de password
@@ -44,6 +43,8 @@ Route.get('show/schedule', 'ConsultaController.show').middleware('auth')
 
 
 Route.get('test/medicine/:id', 'MedicineController.teste')
+
+Route.get('teste/db', 'HospitalController.teste')
 
 
 

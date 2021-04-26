@@ -8,6 +8,7 @@ const Event = use('App/Models/Medicine')
 
 class SessionController {
   async login({ request, auth }) {
+    
 
     try {
       const { email, password } = request.all()
