@@ -57,14 +57,7 @@ class HospitalController {
         }
       }
 
-      async teste() {
-        const medicine = await Medicine.query()
-        .table('users')
-        .innerJoin('medicines', 'users.id', 'medicines.user_id')
-        .fetch()
-       
-        return medicine
-      }
+     
     
     
 }

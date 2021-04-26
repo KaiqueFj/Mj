@@ -1,4 +1,7 @@
 'use strict'
+
+const { HasMany } = require('@adonisjs/lucid/src/Lucid/Relations')
+
 const Model = use('Model')
 
 const Hash = use('Hash')
@@ -18,6 +21,10 @@ class Hospital extends Model {
 
       tokens() {
         return this.hasMany('App/Models/Token')
+      }
+
+      espec() {
+        return this.hasMany('App/Models/Especialidades')
       }
     
     

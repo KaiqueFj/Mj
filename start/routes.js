@@ -43,8 +43,20 @@ Route.get('show/schedule', 'ConsultaController.show').middleware('auth')
 
 
 Route.get('test/medicine/:id', 'MedicineController.teste')
-
 Route.get('teste/db', 'HospitalController.teste')
+
+//teste query db with
+
+Route.post('consulta/register', 'ConsultaController.store')
+Route.post('doctor/register', 'DoctorController.store')
+Route.post('espc/register', 'EspecialidadeController.store')
+
+Route.get('consulta/show', 'ConsultaController.show')
+
+
+
+
+
 
 
 
