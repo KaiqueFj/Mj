@@ -8,7 +8,7 @@ const Event = use('App/Models/Medicine')
 
 class SessionController {
   async login({ request, auth }) {
-    
+
 
     try {
       const { email, password } = request.all()
@@ -19,17 +19,17 @@ class SessionController {
     }
   }
 
-  index({ auth, response, params }) {
+  async index({ auth, response }) {
     try {
-      const evento = Event.all()
-      return evento
+      //Get user informations
+      await auth.check()
+      const user = await auth.getUser()
+      return user
 
-    } catch {
-      return response.json("deu merda")
+    } catch (error) {
+      response.send(error)
     }
-
   }
-
 
 }
 

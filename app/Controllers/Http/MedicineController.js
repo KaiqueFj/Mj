@@ -11,7 +11,7 @@ class MedicineController {
 
   async store({ request, auth }) {
 
-    const {  medicine, dateI, dateF, time } = request.all(); // info do evento
+    const { medicine, dateI, dateF, time } = request.all(); // info do evento
     const user = await auth.getUser(); // retorna o user id
 
     const data = {

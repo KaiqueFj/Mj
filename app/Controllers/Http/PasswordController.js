@@ -1,8 +1,5 @@
 'use strict'
 const User = use('App/Models/User')
-const Hash = use('Hash')
-const moment = require('moment') // moment (RUN NPM INSTALL MOMENT)
-const crypto = require('crypto'); // crypto
 const Mail = use('Mail') // Adonis' mail
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')}  **/
@@ -14,15 +11,6 @@ class PasswordController {
 
     // looking for user in DB
     const user = await User.findByOrFail('email', email)
-
-    // // checking if old password informed is correct
-    // const passwordCheck = await Hash.verify(password, user.password)
-
-    // if (!passwordCheck) {
-    //   return response
-    //     .status(400)
-    //     .send({ message: { error: 'Incorrect password provided' } })
-    // }
 
     // updating user data
     user.email = email

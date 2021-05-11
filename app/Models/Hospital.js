@@ -1,5 +1,6 @@
 'use strict'
 
+
 const { HasMany } = require('@adonisjs/lucid/src/Lucid/Relations')
 
 const Model = use('Model')
@@ -9,25 +10,29 @@ const Hash = use('Hash')
 
 
 class Hospital extends Model {
-    static boot () {
-        super.boot()
-    
-        this.addHook('beforeSave', async (userInstance) => {
-          if (userInstance.dirty.password) {
-            userInstance.password = await Hash.make(userInstance.password)
-          }
-        })
-      }
+  static boot() {
+    super.boot()
 
-      tokens() {
-        return this.hasMany('App/Models/Token')
+    this.addHook('beforeSave', async (userInstance) => {
+      if (userInstance.dirty.password) {
+        userInstance.password = await Hash.make(userInstance.password)
       }
+    })
+  }
 
-      espec() {
-        return this.hasMany('App/Models/Especialidades')
-      }
-    
-    
+  hosp() {
+    return this.belongsTo('App/Models/Hospital')
+  }
+
+  tokens() {
+    return this.hasMany('App/Models/Token')
+  }
+
+  espec() {
+    return this.hasMany('App/Models/Especialidades')
+  }
+
+
 }
 
 module.exports = Hospital

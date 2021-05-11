@@ -1,5 +1,4 @@
 'use strict'
-const User = use('App/Models/User')
 const Consulta = use('App/Models/Consulta')
 
 
@@ -32,7 +31,7 @@ class ConsultaController {
 
     const consulta = await Consulta.query()
       .table('consultas')
-      .select('users.username',' hospitals.username',  'doctors.name','especialidades.title', 'horario', 'data')
+      .select('users.username', ' hospitals.username', 'doctors.name', 'especialidades.title', 'horario', 'data')
       .innerJoin('users ', 'users.id ', 'consultas.user_id')
       .innerJoin('doctors  ', 'doctors.id  ', ' consultas.doctor_id')
       .innerJoin('especialidades  ', 'doctors.id_esp ', ' especialidades.id')
@@ -44,7 +43,7 @@ class ConsultaController {
     return consulta
   }
 }
- 
+
 
 
 module.exports = ConsultaController

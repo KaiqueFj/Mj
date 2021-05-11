@@ -1,9 +1,6 @@
 'use strict'
 
 const User = use('App/Models/User')
-const Hash = use('Hash')
-const moment = require('moment') // moment (RUN NPM INSTALL MOMENT)
-const crypto = require('crypto'); // crypto
 const Mail = use('Mail') // Adonis' mail
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')}  **/

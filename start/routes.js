@@ -28,6 +28,11 @@ Route.post('hospital/register', 'HospitalController.store');
 Route.post('hospital/login', 'HospitalController.login');
 Route.get('hospital/home', 'SessionController.index');
 
+//registro e login de doctor
+Route.post('doctor/register', 'DoctorController.register')
+Route.post('doctor/login', 'SessionController.login')
+
+
 // funções de update e recuperacação de password
 Route.put('password/update/:id', 'PasswordController.update');
 Route.post('password/recover', 'PasswordController.recover')
@@ -40,22 +45,16 @@ Route.get('show/medicine', 'MedicineController.show').middleware('auth')
 Route.post('create/schedule', 'ConsultaController.schedule').middleware('auth')
 Route.get('show/schedule', 'ConsultaController.show').middleware('auth')
 
+//teste query db with
+Route.post('consulta/register', 'ConsultaController.store')
+Route.post('espc/register', 'EspecialidadeController.store')
+Route.get('consulta/show', 'ConsultaController.show')
+Route.get('hospital/show', 'HospitalController.hosp')
+
 
 
 Route.get('test/medicine/:id', 'MedicineController.teste')
 Route.get('teste/db', 'HospitalController.teste')
-
-//teste query db with
-
-Route.post('consulta/register', 'ConsultaController.store')
-Route.post('doctor/register', 'DoctorController.store')
-Route.post('espc/register', 'EspecialidadeController.store')
-
-Route.get('consulta/show', 'ConsultaController.show')
-
-
-
-
 
 
 
