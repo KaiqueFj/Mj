@@ -50,6 +50,8 @@ Route.post('consulta/register', 'ConsultaController.store')
 Route.post('espc/register', 'EspecialidadeController.store')
 Route.get('consulta/show', 'ConsultaController.show')
 Route.get('hospital/show', 'HospitalController.hosp')
+Route.get('hospital_doc/show', 'HospitalController.show_doctor')
+
 
 
 

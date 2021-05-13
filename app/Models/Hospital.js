@@ -20,6 +20,10 @@ class Hospital extends Model {
     })
   }
 
+  doctor() {
+    return this.hasMany('App/Models/Doctor')
+  }
+
   hosp() {
     return this.belongsTo('App/Models/Hospital')
   }

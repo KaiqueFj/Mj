@@ -1,6 +1,7 @@
 'use strict'
 
 const Hosp = use('App/Models/Hospital')
+const Doc = use('App/Models/Hospital')
 
 const Mail = use('Mail') // Adonis' mail
 
@@ -23,10 +24,14 @@ class HospitalController {
     }
   }
 
-  //retrieve all hospitals
-  async show() {
-    const hosp = Hospital.all()
+  //retrieve all doctor
+  async show_doctor() {
+    const hosp = await Doc.query()
+    .with('doctorConsul')
+    .fetch();
+
     return hosp
+
   }
 
 
