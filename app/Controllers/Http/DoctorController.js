@@ -22,6 +22,7 @@ class DoctorController {
     })
     await doctor.save()
 
+    console.log(doctor)
     return response.status(201).send({ token, name });
 
   }

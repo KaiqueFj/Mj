@@ -23,11 +23,9 @@ class Doctor extends Model {
             }
         })
     }
-    doctorConsul() {
-        return this.hasMany('App/Models/Consulta')
-    }
+   
 
-    doctor() {
+    doctors() {
         return this.belongsTo('App/Models/Hospital')
     }
 }

@@ -15,10 +15,18 @@ class DoctorSchema extends Schema {
       .references('id')
       .inTable('especialidades')
 
+      table
+      .integer('id_hosp')
+      .unsigned()
+      .references('id')
+      .inTable('hospitals')
+
+
 
 
 
       table.string('name', 80).notNullable().unique()
+      table.string('email', 254).notNullable().unique()
       table.timestamps()
 
 

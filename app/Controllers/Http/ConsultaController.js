@@ -36,8 +36,6 @@ class ConsultaController {
       .innerJoin('doctors  ', 'doctors.id  ', ' consultas.doctor_id')
       .innerJoin('especialidades  ', 'doctors.id_esp ', ' especialidades.id')
       .innerJoin('hospitals   ', ' especialidades.id_hosp ', 'hospitals.id')
-
-
       .fetch()
 
     return consulta

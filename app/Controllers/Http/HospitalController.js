@@ -1,7 +1,7 @@
 'use strict'
 
 const Hosp = use('App/Models/Hospital')
-const Doc = use('App/Models/Hospital')
+const Doc = use('App/Models/Doctor')
 
 const Mail = use('Mail') // Adonis' mail
 
@@ -9,7 +9,7 @@ const Mail = use('Mail') // Adonis' mail
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')}  **/
 
 class HospitalController {
-  async store({ request, response }) {
+  async store({ request, response,auth }) {
 
     try {
       const hosp_data = request.all();
@@ -17,7 +17,10 @@ class HospitalController {
       const user = await Hosp.create(hosp_data);
       await user.save()
 
-      return response.status(201).send("Hospital cadastrado com sucesso");
+      const { token } = await auth.generate(user);
+
+
+      return response.status(201).send({ token  });
 
     } catch (error) {
       console.log(error)
@@ -25,9 +28,9 @@ class HospitalController {
   }
 
   //retrieve all doctor
-  async show_doctor() {
+  async hosp_doctor() {
     const hosp = await Doc.query()
-    .with('doctorConsul')
+    .with('doctors')
     .fetch();
 
     return hosp
