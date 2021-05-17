@@ -28,7 +28,6 @@ class ConsultaController {
   async show() {
 
 
-
     const consulta = await Consulta.query()
       .table('consultas')
       .select('users.username', ' hospitals.username', 'doctors.name', 'especialidades.title', 'horario', 'data')

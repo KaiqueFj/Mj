@@ -44,19 +44,24 @@ Route.get('show/medicine', 'MedicineController.show').middleware('auth')
 //adicionar consultas e fazer a busca delas
 Route.post('create/schedule', 'ConsultaController.schedule').middleware('auth')
 Route.get('show/schedule', 'ConsultaController.show').middleware('auth')
-
-//teste query db with
 Route.post('consulta/register', 'ConsultaController.store')
-Route.post('espc/register', 'EspecialidadeController.store')
 Route.get('consulta/show', 'ConsultaController.show')
+
+//query db to retrieve all hospitals and doctors that work there
 Route.get('hospital/show', 'HospitalController.hosp')
 Route.get('hospital_doc/show', 'HospitalController.hosp_doctor')
 
+//login with ally services
+Route.get('/google/login','SessionController.redirect');
+Route.get('/authenticated/google','SessionController.callback');
+
+//adiciona as especialidades
+Route.post('espc/register', 'EspecialidadeController.store')
 
 
 
-Route.get('test/medicine/:id', 'MedicineController.teste')
-Route.get('teste/db', 'HospitalController.teste')
+
+
 
 
 

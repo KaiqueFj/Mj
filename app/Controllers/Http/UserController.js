@@ -23,18 +23,17 @@ class UserController {
     })
     await user.save()
 
-    return response.status(201).send({ token, name });
-
+    return response.status(201).send({ name, email, token });
   }
 
-  async index({auth, response}) {
+  async index({ auth, response }) {
     try {
       //Get user informations
       await auth.check()
       const user = await auth.getUser()
       return user
 
-    } catch(error){
+    } catch (error) {
       response.send(error)
     }
   }
