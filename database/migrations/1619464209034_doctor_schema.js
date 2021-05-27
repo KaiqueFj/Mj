@@ -4,23 +4,16 @@
 const Schema = use('Schema')
 
 class DoctorSchema extends Schema {
-  up () {
+  up() {
     this.create('doctors', (table) => {
       table.increments()
 
 
       table
-      .integer('id_esp')
-      .unsigned()
-      .references('id')
-      .inTable('especialidades')
-
-      table
-      .integer('id_hosp')
-      .unsigned()
-      .references('id')
-      .inTable('hospitals')
-
+        .integer('id_esp')
+        .unsigned()
+        .references('id')
+        .inTable('especialidades')
 
 
 
@@ -34,7 +27,7 @@ class DoctorSchema extends Schema {
     })
   }
 
-  down () {
+  down() {
     this.drop('doctors')
   }
 }

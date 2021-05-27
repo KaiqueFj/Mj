@@ -16,7 +16,7 @@ class EspecialidadeSchema extends Schema {
 
 
 
-      table.string('title', 80).notNullable().unique()
+      table.string('especialidade', 80).notNullable().unique()
       table.timestamps()
     })
   }

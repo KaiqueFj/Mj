@@ -34,11 +34,11 @@ class SessionController {
   //Ally provider Facebook API
 
 
-  async redirect ({ ally }) {
+  async redirect({ ally }) {
     await ally.driver('google').redirect()
   }
 
-  async callback ({ ally, auth }) {
+  async callback({ ally, auth }) {
     try {
       const gogUser = await ally.driver('google').getUser()
 

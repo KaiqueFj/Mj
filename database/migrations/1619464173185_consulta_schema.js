@@ -17,15 +17,7 @@ class ConsultaSchema extends Schema {
 
 
 
-      table
-      .integer('doctor_id')
-      .unsigned()
-      .references('id')
-      .inTable('doctors')
-
-
-      table.string('horario', 80).notNullable().unique()
-      table.date('data', 254).notNullable().unique()
+      
       table.timestamps()
     })
   }
