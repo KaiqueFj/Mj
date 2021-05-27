@@ -28,6 +28,10 @@ class Doctor extends Model {
     doctors() {
         return this.belongsTo('App/Models/Hospital')
     }
+
+    appointment(){
+        return this.HasMany('App/Models/Agenda')
+    }
 }
 
 module.exports = Doctor

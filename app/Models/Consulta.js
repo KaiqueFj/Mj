@@ -6,7 +6,11 @@ const Model = use('Model')
 class Consulta extends Model {
     show_consulta() {
         return this.belongsTo('App/Models/User')
-    }    
+    }
+    
+    schedule(){
+        return this.hasMany('App/Models/Schedule')
+    }
 }
 
 module.exports = Consulta
