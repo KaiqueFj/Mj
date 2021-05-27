@@ -1,5 +1,7 @@
 'use strict'
 const Consulta = use('App/Models/Consulta')
+const Doc = use('App/Models/Doctor')
+
 
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')}  **/
@@ -39,14 +41,68 @@ class ConsultaController {
 
     return consulta
   }
+
+  async show_schedule() {
+    //schedule
+
+    const consulta = await Doc.query()
+      .table('doctors')
+      .select('doctors.doctor_name', 'hospital.hospital_name', 'especialidade.title', 'dia.dia')
+      .innerJoin('especialidade', 'especialidade.esp_id', 'doctor.esp_id')
+      .innerJoin('hospital', 'hospital.hospital_id', 'especialidade.hospital_id')
+      .innerJoin('Agenda', 'doctor.doctor_id', 'Agenda.doctor_id')
+      .innerJoin('dia', 'Agenda.Agenda_id', 'dia.Agenda_id')
+      .fetch()
+
+    return consulta
+  }
+
+  async show_day() {
+    //Day
+    const day = await Doc.query()
+      .table('doctors')
+      .select('doctor.doctor_name', 'hospital.hospital_name', 'especialidade.title', 'dia.dia')
+      .innerJoin('especialidade', 'especialidade.esp_id', 'doctor.esp_id')
+      .innerJoin('hospital', 'hospital.hospital_id', 'especialidade.hospital_id')
+      .innerJoin('Agenda', 'doctor.doctor_id', 'Agenda.doctor_id')
+      .innerJoin('dia', 'Agenda.Agenda_id', 'dia.Agenda_id')
+      .fetch()
+
+    return day
+  }
+
+  async show_hours() {
+    //Day
+    const day = await Doc.query()
+      .table('doctors')
+      .select('doctor.doctor_name', 'hospital.hospital_name', 'especialidade.title', 'dia.dia', 'horario.initial', 'horario.final')
+      .innerJoin('especialidade', 'especialidade.esp_id', 'doctor.esp_id')
+      .innerJoin('hospital', 'hospital.hospital_id', 'especialidade.hospital_id')
+      .innerJoin('Agenda', 'doctor.doctor_id', 'Agenda.doctor_id')
+      .innerJoin('dia', 'Agenda.Agenda_id', 'dia.Agenda_id')
+      .innerJoin('horario', 'dia.id', 'horario.day_id')
+      .fetch()
+
+    return day
+  }
+
+  async appointment() {
+    //Day
+    const day = await Consulta.query()
+      .table('consulta')
+      .select('doctor.doctor_name', 'especialidade.title', 'hospital.hospital_name', 'horario.initial', 'dia.dia')
+      .innerJoin('dia', 'horario.day_id', 'dia_id')
+      .innerJoin('agenda', 'dia.schedule_id', 'agenda.schedule_id')
+      .innerJoin('doctor', 'agenda.doctor_id', 'doctor.doctor_id')
+      .innerJoin('especialidade', 'doctor.esp_id', 'especialidade.esp_id')
+      .innerJoin('hospital', 'especialidade.hospital_id', 'hospital.hospital_id')
+      .fetch()
+
+    return day
+  }
 }
 
-
-
 module.exports = ConsultaController
-
-
-
 
 
 

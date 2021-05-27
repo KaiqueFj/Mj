@@ -30,12 +30,9 @@
     "@adonisjs/validator": "^5.0.6",
     "@adonisjs/websocket": "^1.0.12",
     "@types/socket.io": "^2.1.13",
-    "adonis-websocket": "^1.0.4",
-    "axios": "^0.21.1",
     "express": "^4.17.1",
     "moment": "^2.29.1",
-    "mysql": "^2.18.1",
-    "socket.io": "^4.0.0"
+    "mysql": "^2.18.1"
   },
   "devDependencies": {},
   "autoload": {

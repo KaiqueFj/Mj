@@ -1,6 +1,7 @@
 'use strict'
 
 const Doc = use('App/Models/Doctor')
+const Esp = use('App/Models/Especialidade')
 const Mail = use('Mail') // Adonis' mail
 
 
@@ -25,6 +26,19 @@ class DoctorController {
     console.log(doctor)
     return response.status(201).send({ token, name });
 
+  }
+
+
+  async show_esp() {
+    // esp doc specialty
+    const Doctors = await Esp.query()
+      .table('especialidade')
+      .select('doctor.doctor_name', 'hospital.hospital_name', 'especialidade.title')
+      .innerJoin('hospital ', 'hospital.hospital.id ', 'especialidade.hospital_id')
+      .innerJoin('doctor ', 'especialidade.esp_id', 'doctor.esp_id')
+      .fetch()
+
+    return Doctors
   }
 
 }
