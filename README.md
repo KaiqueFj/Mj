@@ -1,34 +1,42 @@
-# Adonis API application
+# ☀️ Back-end of Health in hands  ☁️
 
-This is the boilerplate for creating an API server in AdonisJs, it comes pre-configured with.
 
-1. Bodyparser
-2. Authentication
-3. CORS
-4. Lucid ORM
-5. Migrations and seeds
+# 📕 About this project 
 
-## Setup
+#### This is a project that was requested as an project of the Systems Analysis and Development course at Etec Taboão da Serra.
 
-Use the adonis command to install the blueprint
+This application has the features of:
+ - Create the actions that will be used in front-end
+ - Create the tables and structure to be used in the database 
+ - Create Routes to be consumed by the front-end and
+ - Use middleware to make everything secure while the use of the application
+ - Use of bcrypt to keep the user information secure
 
-```bash
-adonis new yardstick --api-only
+
+# Technologies used
+ - NodeJs
+ - Typescript
+ - Adonisjs 
+
+
+
+# 💻 How to install?
+
+
 ```
+# Clone the repository
+$ git clone https://github.com/KaiqueFj/Mj.git
 
-or manually clone the repo and then run `npm install`.
+# Enter the repository
+$ cd mj
 
+# install dependencies
 
-### Migrations
+$ yarn add
+# or
+$ npm install
 
-Run the following command to run startup migrations.
-
-```js
-adonis migration:run
+# Launch the application
+$ expo start
 ```
-"# Mj" 
-"# Tcc" 
-"# Tcc" 
-"# Tcc" 
-"# Tcc" 
-"# Mj" 
+"# Back-End Health in Hands" 
