@@ -52,11 +52,15 @@ Route.get('hospital/show', 'HospitalController.hosp')
 Route.get('hospital_doc/show', 'HospitalController.hosp_doctor')
 
 //login with ally services
-Route.get('/google/login','SessionController.redirect');
-Route.get('/authenticated/google','SessionController.callback');
+Route.get('/google/login', 'SessionController.redirect');
+Route.get('/authenticated/google', 'SessionController.callback');
 
 //adiciona as especialidades
 Route.post('espc/register', 'EspecialidadeController.store')
+
+Route.post('reminder/register', 'ReminderController.store')
+Route.get('reminder/show', 'ReminderController.store')
+
 
 
 
