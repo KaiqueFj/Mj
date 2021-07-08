@@ -29,6 +29,10 @@ class User extends Model {
   show_consulta() {
     return this.hasMany('App/Models/Consulta')
   }
+
+  Reminder() {
+    return this.hasMany('App/Models/Reminder')
+  }
 }
 
 module.exports = User

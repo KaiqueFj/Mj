@@ -63,7 +63,6 @@ class HospitalController {
   async hosp() {
     const hosp = Hosp.all()
     return hosp
-
   }
 }
 

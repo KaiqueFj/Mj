@@ -24,8 +24,6 @@ class MedicineController {
 
     const newEvent = await Medicine.create(data);
     return newEvent;
-
-
   }
 
   //busca o evento pela data e retorna as informações sobre ele
