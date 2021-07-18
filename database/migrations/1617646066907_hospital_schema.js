@@ -4,27 +4,20 @@
 const Schema = use('Schema')
 
 class HospitalSchema extends Schema {
-  up () {
+  up() {
     this.create('hospitals', (table) => {
       table.increments()
-      table.string('username', 80).notNullable().unique()
-      table.string('email', 254).notNullable().unique()
-      table.string('password', 60).notNullable()
-      table.varchar('adress',80).notNullable()
-      table.varchar('phoneNumber',80).notNullable()
-      table.varchar('cidade',80).notNullable()
-      table.varchar('estado',30).notNullable()
-      table.varchar('latitude',30).notNullable()
-      table.varchar('longitude',30).notNullable()
-      table.varchar('cep',45).notNullable()
-      table.text('image',2000).notNullable()
+      table.string('name', 80).notNullable().unique()
+      table.varchar('phoneNumber', 80).notNullable()
+      table.varchar('latitude', 30).notNullable()
+      table.varchar('longitude', 30).notNullable()
       table.timestamps()
       table.string('token') // token
       table.timestamp('token_created_at') // date when token was created
     })
   }
 
-  down () {
+  down() {
     this.drop('hospitals')
   }
 }
